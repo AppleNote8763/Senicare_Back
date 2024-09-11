@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.korit.senicare.dto.request.auth.IdCheckRequestDto;
+import com.korit.senicare.dto.request.auth.TelAuthCheckRequestDto;
 import com.korit.senicare.dto.request.auth.TelAuthRequestDto;
 import com.korit.senicare.dto.response.ResponseDto;
 import com.korit.senicare.service.AuthService;
@@ -34,6 +35,14 @@ public class AuthController {
         @RequestBody @Valid TelAuthRequestDto requestBody
     ) {
         ResponseEntity<ResponseDto> response = authService.telAuth(requestBody);
+        return response;
+    }
+
+    @PostMapping("/tel-auth-check")
+    public ResponseEntity<ResponseDto> telAuthCheck(
+        @RequestBody @Valid TelAuthCheckRequestDto requestBody
+    ) {
+        ResponseEntity<ResponseDto> response = authService.telAuthCheck(requestBody);
         return response;
     }
 
