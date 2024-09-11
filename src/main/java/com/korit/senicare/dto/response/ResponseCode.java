@@ -6,6 +6,7 @@ public interface ResponseCode {
 
     String SUCCESS = "SU";
 
+    String VALIDATION_FAIL = "VF";
     String DUPLICATED_USER_ID = "DI";
 
     String DATABASE_ERROR = "DBE";
