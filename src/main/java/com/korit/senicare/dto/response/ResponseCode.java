@@ -13,7 +13,8 @@ public interface ResponseCode {
     String TEL_AUTH_FAIL = "TAF";
     String SIGN_IN_FAIL = "SF";
 
-    String MESSAGE_SEND_FAIL = "TF";
+    String MESSAGE_SEND_FAIL = "MSF";
+    String TOKEN_CREATE_FAIL = "TCF";
     String DATABASE_ERROR = "DBE";
 
 }
