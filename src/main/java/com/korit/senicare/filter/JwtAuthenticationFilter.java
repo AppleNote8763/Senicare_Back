@@ -50,6 +50,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     }
 
                     // security context에 등록
+                    setContext(request, userId);
 
                 } catch (Exception exception) {
                     exception.printStackTrace();
