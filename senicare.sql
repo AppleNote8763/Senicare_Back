@@ -131,4 +131,14 @@ CREATE USER 'senicare'@'%' IDENTIFIED BY 'P!ssw0rd';
 
 GRANT all privileges ON senicare.* TO 'senicare'@'%';
 
-DELETE FROM nurses WHERE name="";
+USE senicare;
+
+SELECT * FROM tel_auth_number;
+SELECT * FROM nurses;
+
+UPDATE tel_auth_number
+SET tel_number = '01011111111';
+
+UPDATE tel_auth_number 
+SET tel_number = '01011111111' 
+WHERE tel_number = '01076265152';
