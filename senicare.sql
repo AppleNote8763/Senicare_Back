@@ -130,3 +130,5 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 CREATE USER 'senicare'@'%' IDENTIFIED BY 'P!ssw0rd';
 
 GRANT all privileges ON senicare.* TO 'senicare'@'%';
+
+DELETE FROM nurses WHERE name="";

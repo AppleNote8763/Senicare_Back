@@ -28,6 +28,7 @@ public class SignUpRequestDto {
     @NotBlank
     private String authNumber;
     @NotBlank
+    @Pattern(regexp = "^(home|kakao|naver)$")
     private String joinPath;
     private String snsId;
 
