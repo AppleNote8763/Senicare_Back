@@ -25,14 +25,19 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     ) throws IOException, ServletException {
 
         CustomOAuth2User customOAuth2User = (CustomOAuth2User) authentication.getPrincipal();
-        String userId = customOAuth2User.getName();
         Map<String, Object> attributes = customOAuth2User.getAttributes();
+        boolean existed = customOAuth2User.isExisted();
 
-        if (userId == null) {
+        // 회원가입 O
+        if (existed) {
+            String accessToken = (String) attributes.get("accessToken");
+            response.sendRedirect("http://localhost:3000/sns-success?accessToken=" + accessToken + "&expiration=36000");
+        }
+        // 회원가입 X
+        else {
             String snsId = (String) attributes.get("snsId");
             String joinPath = (String) attributes.get("joinPath");
-        }else {
-            String accessToken = (String) attributes.get("accessToken");
+            response.sendRedirect("http://localhost:3000/auth?snsId=" + snsId + "&joinPath=" + joinPath);
         }
 
     }
