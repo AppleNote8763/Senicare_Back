@@ -1,6 +1,7 @@
 package com.korit.senicare.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.korit.senicare.dto.request.tool.PostToolRequestDto;
 import com.korit.senicare.dto.response.ResponseDto;
+import com.korit.senicare.dto.response.tool.GetToolListResponseDto;
 import com.korit.senicare.service.ToolService;
 
 import jakarta.validation.Valid;
@@ -25,6 +27,12 @@ public class ToolController {
         @RequestBody @Valid PostToolRequestDto requestBody
     ) {
         ResponseEntity<ResponseDto> response = toolService.postTool(requestBody);
+        return response;
+    }
+
+    @GetMapping(value = {"", "/"})
+    public ResponseEntity<? super GetToolListResponseDto> getToolList() {
+        ResponseEntity<? super GetToolListResponseDto> response = toolService.getToolList();
         return response;
     }
 
