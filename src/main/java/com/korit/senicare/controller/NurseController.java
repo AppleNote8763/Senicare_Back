@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.korit.senicare.dto.response.nurse.GetNurseListResponseDto;
 import com.korit.senicare.dto.response.nurse.GetSignInResponseDto;
 import com.korit.senicare.service.NurseService;
 
@@ -17,6 +18,12 @@ import lombok.RequiredArgsConstructor;
 public class NurseController {
 
     private final NurseService nurseService;
+
+    @GetMapping(value = {"", "/"})
+    public ResponseEntity<? super GetNurseListResponseDto> getNurseList() {
+        ResponseEntity<? super GetNurseListResponseDto> response = nurseService.getNurseList();
+        return response;
+    }
 
     @GetMapping("sign-in")
     public ResponseEntity<? super GetSignInResponseDto> getSignIn(
