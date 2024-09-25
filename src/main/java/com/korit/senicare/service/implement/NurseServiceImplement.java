@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.korit.senicare.dto.response.ResponseDto;
 import com.korit.senicare.dto.response.nurse.GetNurseListResponseDto;
+import com.korit.senicare.dto.response.nurse.GetNurseResponseDto;
 import com.korit.senicare.dto.response.nurse.GetSignInResponseDto;
 import com.korit.senicare.entity.NurseEntity;
 import com.korit.senicare.repository.NurseRepository;
@@ -56,6 +57,23 @@ public class NurseServiceImplement implements NurseService {
 
         return GetNurseListResponseDto.success(nurseEntities);
 
+    }
+
+    @Override
+    public ResponseEntity<? super GetNurseResponseDto> getNurse(String userId) {
+        NurseEntity nurseEntity = null;
+
+        try {
+
+            nurseEntity = nurseRepository.findByUserId(userId);
+            if (nurseEntity == null) return ResponseDto.noExistUserId();
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return GetNurseResponseDto.success(nurseEntity);
     }
     
 }
