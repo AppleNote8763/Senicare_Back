@@ -1,5 +1,6 @@
 package com.korit.senicare.entity;
 
+import com.korit.senicare.dto.request.customer.PatchCustomerRequestDto;
 import com.korit.senicare.dto.request.customer.PostCustomerRequestDto;
 
 import jakarta.persistence.Entity;
@@ -31,6 +32,15 @@ public class CustomerEntity {
     private String location;
 
     public CustomerEntity(PostCustomerRequestDto dto) {
+        this.profileImage = dto.getProfileImage();
+        this.name = dto.getName();
+        this.birth = dto.getBirth();
+        this.charger = dto.getCharger();
+        this.address = dto.getAddress();
+        this.location = dto.getLocation();
+    }
+
+    public void patch(PatchCustomerRequestDto dto) {
         this.profileImage = dto.getProfileImage();
         this.name = dto.getName();
         this.birth = dto.getBirth();
