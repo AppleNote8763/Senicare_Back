@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.korit.senicare.dto.request.nurse.PatchNurseRequestDto;
 import com.korit.senicare.dto.response.ResponseDto;
+import com.korit.senicare.dto.response.nurse.GetChargedCustomerResponseDto;
 import com.korit.senicare.dto.response.nurse.GetNurseListResponseDto;
 import com.korit.senicare.dto.response.nurse.GetNurseResponseDto;
 import com.korit.senicare.dto.response.nurse.GetSignInResponseDto;
@@ -54,6 +55,14 @@ public class NurseController {
         @AuthenticationPrincipal String userId
     ) {
         ResponseEntity<ResponseDto> response = nurseService.patchNurse(requestBody, userId);
+        return response;
+    }
+
+    @GetMapping("/{nurseId}/customers")
+    public ResponseEntity<? super GetChargedCustomerResponseDto> getChargedCustomer(
+        @PathVariable("nurseId") String nurseId
+    ) {
+        ResponseEntity<? super GetChargedCustomerResponseDto> response = nurseService.getChargedCustomer(nurseId);
         return response;
     }
 
